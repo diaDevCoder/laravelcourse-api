@@ -49,8 +49,8 @@ class StudentController extends Controller
     }
 
     public function search($query) {        
-        $students = Student::with('courses')->where('first_name', 'LIKE', "%$query%")
-                           ->orWhere('last_name', 'LIKE', "%$query%")
+        $students = Student::where('first_name', 'LIKE', "%{$query}%")
+                           ->orWhere('last_name', 'LIKE', "%{$query}%")
                            ->get();
 
         if($students) {
